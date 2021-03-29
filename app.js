@@ -12,10 +12,11 @@ app.use(express.json());
 app.use("/salaries", router);
 
 const uri = `mongodb+srv://${username}:${password}@cluster0.oss1b.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+const PORT = process.env.PORT || 2020;
 mongoose
   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    app.listen(2020, () => {
-      console.log("Server is Running on PORT 2020");
+    app.listen(PORT, () => {
+      console.log(`Server is Running on PORT ${PORT}`);
     });
   });
